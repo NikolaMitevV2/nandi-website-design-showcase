@@ -52,7 +52,7 @@ const ProcessSection = () => {
                   <p className="font-lato font-light text-lg text-body leading-relaxed mb-8 text-gray-50 text-center">
                     {step.description}
                   </p>
-                  <div className="font-montserrat font-bold text-6xl lg:text-8xl text-space-purple/30 flex items-center ">
+                  <div className="font-montserrat font-bold text-6xl lg:text-8xl text-space-purple/30 flex items-center justify-center ">
                     {step.number}
                   </div>
                 </div>
