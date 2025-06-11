@@ -41,9 +41,9 @@ const PricingSection = () => {
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-white mb-8 tracking-tight">
             Investment Plans
           </h2>
-          <p className="animate-on-scroll font-lato font-light text-xl text-body max-w-3xl mx-auto leading-relaxed" style={{
+          <p style={{
           animationDelay: '0.2s'
-        }}>
+        }} className="animate-on-scroll font-lato font-light text-xl text-body max-w-3xl mx-auto leading-relaxed text-gray-50">
             Choose the perfect plan that aligns with your business goals and budget
           </p>
         </div>
