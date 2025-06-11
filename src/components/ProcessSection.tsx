@@ -46,13 +46,13 @@ const ProcessSection = () => {
               <div className="grid lg:grid-cols-2 min-h-[600px]">
                 {/* Content */}
                 <div className="p-12 lg:p-16 flex flex-col justify-center sticky ">
-                  <h3 className="font-montserrat font-bold text-3xl lg:text-4xl text-white mb-6 tracking-tight">
+                  <h3 className="font-montserrat font-bold text-3xl lg:text-4xl text-white mb-6 tracking-tight text-center">
                     {step.title}
                   </h3>
-                  <p className="font-lato font-light text-lg text-body leading-relaxed mb-8 text-gray-50">
+                  <p className="font-lato font-light text-lg text-body leading-relaxed mb-8 text-gray-50 text-center">
                     {step.description}
                   </p>
-                  <div className="font-montserrat font-bold text-6xl lg:text-8xl text-space-purple/30">
+                  <div className="font-montserrat font-bold text-6xl lg:text-8xl text-space-purple/30 flex items-center ">
                     {step.number}
                   </div>
                 </div>
