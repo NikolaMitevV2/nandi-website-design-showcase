@@ -1,16 +1,13 @@
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="py-16 px-6 border-t border-space-purple/20 relative overflow-hidden">
+  return <footer className="py-16 px-6 border-t border-space-purple/20 relative overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center space-y-8">
           <div className="font-montserrat font-bold text-3xl text-white tracking-tight">
             N&i
           </div>
           
-          <p className="font-lato font-light text-body max-w-2xl mx-auto leading-relaxed">
+          <p className="font-lato font-light text-body max-w-2xl mx-auto leading-relaxed text-gray-50">
             Crafting luxury digital experiences that elevate brands and drive exceptional results. 
             Your vision, our expertise.
           </p>
@@ -34,7 +31,7 @@ const Footer = () => {
           </div>
 
           <div className="pt-8 border-t border-space-purple/20">
-            <p className="font-lato font-light text-body text-sm">
+            <p className="font-lato font-light text-body text-sm text-gray-300">
               © {currentYear} N&i. All rights reserved. Crafted with passion and precision.
             </p>
           </div>
@@ -43,9 +40,9 @@ const Footer = () => {
 
       {/* Background Decorations */}
       <div className="orbital-decoration w-32 h-32 top-10 left-10 opacity-10" />
-      <div className="orbital-decoration w-20 h-20 bottom-10 right-20 opacity-15" style={{ animationDelay: '3s' }} />
-    </footer>
-  );
+      <div className="orbital-decoration w-20 h-20 bottom-10 right-20 opacity-15" style={{
+      animationDelay: '3s'
+    }} />
+    </footer>;
 };
-
 export default Footer;
