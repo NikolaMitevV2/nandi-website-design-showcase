@@ -66,7 +66,7 @@ const PortfolioSection = () => {
               </button>
             </div>
             
-            <div className="font-montserrat text-white/60">
+            <div className="font-montserrat text-white/60 mx-[18px]">
               {String(currentSlide + 1).padStart(2, '0')} / {String(portfolioItems.length).padStart(2, '0')}
             </div>
           </div>
