@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 const PortfolioSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -96,9 +98,9 @@ const PortfolioSection = () => {
           </div>
 
           <div className="text-center mt-12">
-            <button className="neumorphic-btn text-white font-montserrat font-medium">
+            <Link to="/portfolio" className="neumorphic-btn text-white font-montserrat font-medium">
               View Full Portfolio
-            </button>
+            </Link>
           </div>
         </div>
       </div>
