@@ -53,7 +53,7 @@ const AboutSection = () => {
             <div className="flex justify-center items-center">
               <div className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xlrounded-xl ">
                 <img
-                  src="../../public/lovable-uploads/eddited.PNG"
+                  src="/lovable-uploads/eddited.PNG"
                   alt="Web Development Process"
                   className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-contain rounded-xl"
                 />
