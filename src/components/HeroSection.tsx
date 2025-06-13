@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const splineRef = useRef<HTMLDivElement>(null); // New ref for spline background
+  const splineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,7 +14,7 @@ const HeroSection = () => {
         heroRef.current.style.transform = `translateY(${offset}px)`;
       }
       if (splineRef.current) {
-        splineRef.current.style.transform = `translateY(${offset}px)`; // Apply same transform
+        splineRef.current.style.transform = `translateY(${offset}px)`;
       }
     };
 
@@ -34,20 +34,25 @@ const HeroSection = () => {
       id="home"
       className="fixed top-0 left-0 w-full min-h-screen flex flex-col pt-20 overflow-hidden z-0"
     >
-      {/* Background Spline 3D with parallax */}
+      {/* Fullscreen responsive Spline background with parallax */}
       <div
         ref={splineRef}
-        className="absolute top-0 left-0 w-full h-full -z-10 will-change-transform"
+        className="absolute top-0 left-0 w-full h-[130vh] -z-10"
+        style={{ willChange: "transform" }}
       >
         <iframe
           src="https://my.spline.design/glowingplanetparticles-5qSfykJ958pk09NZnFexIdME/"
           frameBorder="0"
-          className="w-full h-full"
           allow="autoplay; fullscreen"
-        ></iframe>
+          className="w-full h-full"
+          style={{
+            pointerEvents: "none",
+            display: "block", // Avoid iframe bottom spacing in some browsers
+          }}
+        />
       </div>
 
-      {/* Foreground Content with parallax */}
+      {/* Foreground content */}
       <div ref={heroRef} className="text-left z-10 px-6">
         <h1 className="font-montserrat font-bold text-5xl md:text-7xl lg:text-8xl text-white mb-6 tracking-tight">
           Luxury Web
