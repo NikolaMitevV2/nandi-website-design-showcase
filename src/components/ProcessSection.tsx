@@ -69,13 +69,19 @@ const ProcessSection = () => {
             }}
           >
             <div className="rounded-3xl overflow-hidden shadow-xl">
-              <div className="grid lg:grid-cols-2 min-h-[600px] bg-gray-950">
+              <div className="grid lg:grid-cols-2 min-h-[480px] bg-[linear-gradient(145deg,rgba(30,27,75,1),rgba(49,46,129,1))]">
                 <div className="p-12 lg:p-16 flex flex-col justify-center relative z-10">
                   <h3 className="font-montserrat font-bold text-3xl lg:text-4xl text-white mb-6 tracking-tight text-center">
                     {step.title}
                   </h3>
                   <div className="relative overflow-hidden">
-                    <p className="font-lato font-light text-lg text-body leading-relaxed mb-8 text-gray-50 text-center">
+                    <p className="flex flex-col gap-6 items-center font-lato font-light text-lg text-body leading-relaxed mb-8 text-gray-50 text-center">
+                      <div className="relative flex items-center justify-center w-8 h-8 group cursor-pointer">
+                        <div className="absolute inset-0 rounded-full border-2 border-space-purple opacity-30 animate-pulse"></div>
+                        <div className="absolute inset-0 rounded-full border border-space-purple opacity-20 transition-all duration-500 ease-out group-hover:scale-[2] group-hover:opacity-0"></div>
+                        <div className="w-2.5 h-2.5 bg-space-purple rounded-full transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-md group-hover:shadow-space-purple/40"></div>
+                      </div>
+
                       {step.description}
                     </p>
                     <div className="font-montserrat font-bold text-6xl lg:text-8xl text-space-purple/30 flex items-center justify-center ">

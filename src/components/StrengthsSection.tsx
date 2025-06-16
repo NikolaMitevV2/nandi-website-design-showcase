@@ -1,38 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { Check, Magnet, Palette, Search, Smartphone } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const StrengthsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [cardRotations, setCardRotations] = useState<{
-    [key: number]: { rotateX: number; rotateY: number };
-  }>({});
-
-  const handleMouseMove = (
-    e: React.MouseEvent<HTMLDivElement>,
-    index: number
-  ) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -15; // Max 10 degrees
-    const rotateY = ((x - centerX) / centerX) * 15; // Max 10 degrees
-
-    setCardRotations((prev) => ({
-      ...prev,
-      [index]: { rotateX, rotateY },
-    }));
-  };
-
-  const handleMouseLeave = (index: number) => {
-    setCardRotations((prev) => ({
-      ...prev,
-      [index]: { rotateX: 0, rotateY: 0 },
-    }));
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,48 +13,44 @@ const StrengthsSection = () => {
           }
         });
       },
-      {
-        threshold: 0.1,
-      }
+      { threshold: 0.1 }
     );
 
     const elements = sectionRef.current?.querySelectorAll(".animate-on-scroll");
     elements?.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
   const strengths = [
     {
-      icon: "🎨",
+      icon: <Palette className="text-space-purple" size={40} />,
       title: "Custom Design",
       description:
         "Bespoke designs tailored to your brand identity and business goals.",
-      image:
-        "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=600&fit=crop",
+      background:
+        "https://plus.unsplash.com/premium_photo-1661382011487-cd3d6b1d9dff?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      icon: "🚀",
+      icon: <Magnet className="text-space-purple" size={40} />,
       title: "Lead Generation Focus",
       description:
         "Websites optimized to convert visitors into valuable leads and customers.",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=600&fit=crop",
+      background: "",
     },
     {
-      icon: "📱",
+      icon: <Smartphone className="text-space-purple" size={40} />,
       title: "Responsive",
       description:
         "Perfect experience across all devices, from mobile to desktop.",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=600&fit=crop",
+      background: "",
     },
     {
-      icon: "🔍",
+      icon: <Search className="text-space-purple" size={40} />,
       title: "SEO Optimized",
       description:
         "Built with search engine optimization at the core for maximum visibility.",
-      image:
-        "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=600&fit=crop",
+      background: "",
     },
   ];
 
@@ -93,152 +59,70 @@ const StrengthsSection = () => {
       id="strengths"
       className="py-32 px-6 relative overflow-hidden bg-purple-100"
     >
-      <style>{`
-        .consulting-card {
-          background: #030712;
-          border-radius: 20px;
-          height: 320px;
-          position: relative;
-          overflow: hidden;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          cursor: pointer;
-          transform-style: preserve-3d;
-          perspective: 1000px;
-        }
-        
-        .consulting-card:hover {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
-        }
-        
-        .card-content {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          padding: 32px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          z-index: 2;
-          transition: all 0.4s ease;
-        }
-        
-        .card-image {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          width: 50%;
-          background-size: cover;
-          background-position: center;
-          opacity: 0;
-          transition: all 0.4s ease;
-          border-radius: 0 20px 20px 0;
-        }
-        
-        .consulting-card:hover .card-image {
-          opacity: 0.3;
-        }
-        
-        .consulting-card:hover .card-content {
-          width: 50%;
-        }
-        
-        .card-title {
-          font-size: 24px;
-          font-weight: 600;
-          color: white;
-          line-height: 1.2;
-          margin-bottom: 16px;
-          font-family: 'Inter', sans-serif;
-        }
-        
-        .card-description {
-          font-size: 14px;
-          color:white;
-          line-height: 1.5;
-          font-weight: 400;
-          font-family: 'Inter', sans-serif;
-        }
-        
-        .services-label {
-          position: absolute;
-          top: 32px;
-          right: 32px;
-          font-size: 12px;
-          color: rgba(3, 7, 18, 0.6);
-          writing-mode: vertical-rl;
-          text-orientation: mixed;
-          font-weight: 500;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-        }
-        
-        .animate-on-scroll {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .animate-on-scroll.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
-
       <div ref={sectionRef} className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="animate-on-scroll font-bold text-4xl md:text-5xl text-gray-900 mb-8 tracking-tight">
+          <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900 mb-8 tracking-tight">
             Our Core Strengths
           </h2>
           <p
+            className="animate-on-scroll font-lato font-light text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
             style={{ animationDelay: "0.2s" }}
-            className="animate-on-scroll text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
           >
             We combine technical expertise with creative vision to deliver
             exceptional results
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {strengths.map((strength, index) => (
             <div
-              key={index}
-              className="animate-on-scroll consulting-card"
-              style={{
-                animationDelay: `${0.3 + index * 0.1}s`,
-                transform: `perspective(1000px) rotateX(${
-                  cardRotations[index]?.rotateX || 0
-                }deg) rotateY(${
-                  cardRotations[index]?.rotateY || 0
-                }deg) translateY(-8px)`,
-              }}
-              onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseLeave={() => handleMouseLeave(index)}
+              key={index} // Added a unique key for list rendering
+              className="relative h-96 rounded-lg overflow-hidden shadow-lg group transform transition-all duration-300 hover:scale-105  hover:shadow-2xl hover:shadow-space-purple/20"
             >
-              <div className="services-label">Services</div>
+              {/* Custom Border Design */}
+              <div className="absolute inset-0 pointer-events-none z-20">
+                {/* Top-left borders */}
+                <div className="absolute top-0 left-0 w-1/2 group-hover:w-full h-1.5 bg-space-purple rounded-tr-lg transition-all duration-300"></div>
+                <div className="absolute top-0 left-0 w-1.5 h-1/2 group-hover:h-full bg-space-purple rounded-bl-lg transition-all duration-300"></div>
 
-              <div className="card-content">
-                <div>
-                  <h3 className="card-title ">{strength.title}</h3>
-                  <p className="card-description">{strength.description}</p>
+                {/* Bottom-right borders */}
+                <div className="absolute bottom-0 right-0 w-1/2 group-hover:w-full h-1.5 bg-space-purple rounded-tl-lg transition-all duration-300"></div>
+                <div className="absolute bottom-0 right-0 w-1.5 h-1/2 group-hover:h-full bg-space-purple rounded-tr-lg transition-all duration-300"></div>
+
+                {/* Small square at top left */}
+                {/* <div className="absolute top-4 left-4 w-5 h-5 bg-black rounded-sm"></div> */}
+                <div className="relative flex items-center justify-center w-5 h-5 group cursor-pointer m-5">
+                  <div className="absolute inset-0 rounded-full border-2 border-space-purple opacity-30 animate-pulse"></div>
+                  <div className="absolute inset-0 rounded-full border border-space-purple opacity-20 transition-all duration-500 ease-out group-hover:scale-[2] group-hover:opacity-0"></div>
+                  <div className="w-2.5 h-2.5 bg-space-purple rounded-full transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-md group-hover:shadow-space-purple/40"></div>
                 </div>
               </div>
-
+              {/* Background Image */}
               <div
-                className="card-image"
-                style={{ backgroundImage: `url(${strength.image})` }}
-              />
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+                }}
+              >
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-6 h-full flex flex-col items-center justify-center text-center bg-[linear-gradient(145deg,rgba(30,27,75,1),rgba(49,46,129,1))] group-hover:bg-[linear-gradient(145deg,rgba(30,27,75,0.7),rgba(49,46,129,0.8))] transition-all duration-300 ">
+                <h3 className="text-3xl font-bold text-white mb-2">
+                  {strength.title}
+                </h3>
+                <span className="m-5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out group-hover:scale-110">
+                  {strength.icon}
+                </span>
+                <p className="text-white text-sm leading-relaxed opacity-90">
+                  {strength.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Background Decorations */}
-      <div className="absolute w-36 h-36 top-20 left-10 opacity-10 bg-blue-500 rounded-full blur-xl" />
-      <div className="absolute w-24 h-24 bottom-32 right-20 opacity-15 bg-purple-500 rounded-full blur-xl" />
     </section>
   );
 };

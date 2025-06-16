@@ -53,30 +53,34 @@ const HeroSection = () => {
       </div>
 
       {/* Foreground content */}
-      <div ref={heroRef} className="text-left z-10 px-6">
-        <h1 className="font-montserrat font-bold text-5xl md:text-7xl lg:text-8xl text-white mb-6 tracking-tight">
-          Luxury Web
+      <div ref={heroRef} className="text-left z-10 px-6 flex flex-col">
+        <h1 className="font-montserrat font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white mb-6 tracking-tight">
+          Websites
           <br />
-          <span className="bg-gradient-to-r from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent">
-            Development
+          <span className="bg-gradient-to-r w-fit from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent">
+            &lt;/&gt;That Drive
           </span>
+          <br />
+          <span>Revenue</span>
         </h1>
 
-        <p
-          className="font-lato font-light text-xl md:text-2xl text-white/70 mb-12 max-w-2xl leading-relaxed"
-          style={{ animationDelay: "0.2s" }}
-        >
-          We create extraordinary digital experiences that elevate your brand
-          and drive results
-        </p>
+        <div>
+          <p
+            className="font-lato opacity-90 text-base md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed"
+            style={{ animationDelay: "0.2s" }}
+          >
+            We build high-performing websites engineered to convert visitors
+            into customers and accelerate your business growth.
+          </p>
 
-        <button
-          onClick={scrollToContact}
-          className="neumorphic-btn text-white font-montserrat font-medium text-lg tracking-wide"
-          style={{ animationDelay: "0.4s" }}
-        >
-          Get Started
-        </button>
+          <button
+            onClick={scrollToContact}
+            className="neumorphic-btn text-white font-montserrat font-medium text-base tracking-wide w-fit"
+            style={{ animationDelay: "0.4s" }}
+          >
+            Get Started
+          </button>
+        </div>
       </div>
 
       {/* Orbital Decorations */}

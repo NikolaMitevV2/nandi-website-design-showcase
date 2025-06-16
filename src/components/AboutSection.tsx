@@ -1,8 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [sectionRect, setSectionRect] = useState<DOMRect | null>(null);
+
+  // Refs for the images
+  const codeGradientRef = useRef<HTMLImageElement>(null);
+  const chartRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -17,8 +25,73 @@ const AboutSection = () => {
     );
     const elements = sectionRef.current?.querySelectorAll(".animate-on-scroll");
     elements?.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    // Update section dimensions on mount and resize
+    const updateSectionRect = () => {
+      if (sectionRef.current) {
+        setSectionRect(sectionRef.current.getBoundingClientRect());
+      }
+    };
+
+    updateSectionRect(); // Initial calculation
+    window.addEventListener("resize", updateSectionRect);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateSectionRect);
+    };
   }, []);
+
+  // Mouse move effect for parallax and 3D rotation
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const handleMouseMove = (event: MouseEvent) => {
+      // Defer state update to next animation frame for smoothness
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      animationFrameId = requestAnimationFrame(() => {
+        setMousePosition({ x: event.clientX, y: event.clientY });
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
+
+  const calculateTransform = (
+    imageElement: HTMLImageElement | null,
+    moveFactorX: number,
+    moveFactorY: number,
+    rotateFactorX: number
+  ) => {
+    if (!imageElement || !sectionRect) {
+      return {};
+    }
+
+    const sectionCenterX = sectionRect.left + sectionRect.width / 2;
+    const sectionCenterY = sectionRect.top + sectionRect.height / 2;
+
+    const relativeX = mousePosition.x - sectionCenterX;
+    const relativeY = mousePosition.y - sectionCenterY;
+
+    // Movement (Parallax)
+    const translateX = relativeX * moveFactorX;
+    const translateY = relativeY * moveFactorY;
+
+    const rotateXDeg = relativeY * rotateFactorX;
+
+    return {
+      transform: `perspective(1000px) translateX(${translateX}px) translateY(${translateY}px) rotateX(${rotateXDeg}deg)`,
+    };
+  };
 
   return (
     <section
@@ -51,29 +124,43 @@ const AboutSection = () => {
             }}
           >
             <div className="flex justify-center items-center">
-              <div className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xlrounded-xl ">
+              <div className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl rounded-xl ">
                 <img
                   src="/lovable-uploads/eddited.PNG"
                   alt="Web Development Process"
                   className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-contain rounded-xl"
                 />
                 <img
-                  src="https://placehold.co/112x112/CCEEFF/223344?text=Small+Top"
+                  ref={codeGradientRef}
+                  src="/lovable-uploads/code-gradient.png"
                   alt="Small decorative image"
                   className="absolute
-                     top-[-0.5rem] sm:top-[-1rem] md:top-[-1.5rem]
-                     right-[-1rem] sm:right-[-2rem] md:right-[-3rem]
-                     w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28
-                     object-cover rounded-xl shadow-md"
+                      top-[-0.5rem] sm:top-[-1rem] md:top-[-1.5rem]
+                      right-[-1rem] sm:right-[-2rem] md:right-[-3rem]
+                      w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28
+                      object-cover rounded-xl"
+                  style={calculateTransform(
+                    codeGradientRef.current,
+                    0.01, // moveFactorX (moves with mouse horizontally)
+                    0.01, // moveFactorY (moves with mouse vertically)
+                    0.01 // rotateFactorX (tips towards/away based on vertical mouse pos)
+                  )}
                 />
                 <img
-                  src="https://placehold.co/224x224/FFAAEE/552244?text=Large+Bottom"
+                  ref={chartRef}
+                  src="/lovable-uploads/chart.png"
                   alt="Another decorative image"
                   className="absolute
-                     bottom-[-1rem] sm:bottom-[-1.5rem] md:bottom-[-2rem]
-                     left-[-2rem] sm:left-[-3rem] md:left-[-4rem]
-                     w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56
-                     object-cover rounded-xl shadow-xl"
+                      bottom-[-1rem] sm:bottom-[-1.5rem] md:bottom-[-2rem]
+                      left-[-2rem] sm:left-[-3rem] md:left-[-4rem]
+                      w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56
+                      object-cover rounded-xl shadow-xl"
+                  style={calculateTransform(
+                    chartRef.current,
+                    -0.02, // moveFactorX (moves opposite mouse horizontally)
+                    -0.02, // moveFactorY (moves opposite mouse vertically)
+                    -0.02 // rotateFactorX (tips opposite towards/away based on vertical mouse pos)
+                  )}
                 />
               </div>
             </div>
@@ -120,4 +207,5 @@ const AboutSection = () => {
     </section>
   );
 };
+
 export default AboutSection;
