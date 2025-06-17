@@ -55,11 +55,11 @@ const StrengthsSection = () => {
   ];
 
   return (
-    <section
-      id="strengths"
-      className="py-32 px-6 relative overflow-hidden bg-purple-100"
-    >
-      <div ref={sectionRef} className="container mx-auto max-w-7xl">
+    <section id="strengths" className="py-32 px-6 relative overflow-hidden">
+      <div
+        ref={sectionRef}
+        className="container mx-auto max-w-7xl  bg-purple-100 rounded-3xl w-[95%] h-fit p-20"
+      >
         <div className="text-center mb-20">
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900 mb-8 tracking-tight">
             Our Core Strengths
@@ -82,15 +82,13 @@ const StrengthsSection = () => {
               {/* Custom Border Design */}
               <div className="absolute inset-0 pointer-events-none z-20">
                 {/* Top-left borders */}
-                <div className="absolute top-0 left-0 w-1/2 group-hover:w-full h-1.5 bg-space-purple rounded-tr-lg transition-all duration-300"></div>
-                <div className="absolute top-0 left-0 w-1.5 h-1/2 group-hover:h-full bg-space-purple rounded-bl-lg transition-all duration-300"></div>
+                <div className="absolute top-0 left-0 w-1/2 group-hover:w-full h-1.5 bg-space-purple rounded-lg transition-all duration-300"></div>
+                <div className="absolute top-0 left-0 w-1.5 h-1/2 group-hover:h-full bg-space-purple rounded-lg transition-all duration-300"></div>
 
                 {/* Bottom-right borders */}
-                <div className="absolute bottom-0 right-0 w-1/2 group-hover:w-full h-1.5 bg-space-purple rounded-tl-lg transition-all duration-300"></div>
-                <div className="absolute bottom-0 right-0 w-1.5 h-1/2 group-hover:h-full bg-space-purple rounded-tr-lg transition-all duration-300"></div>
+                <div className="absolute bottom-0 right-0 w-1/2 group-hover:w-full h-1.5 bg-space-purple rounded-lg transition-all duration-300"></div>
+                <div className="absolute bottom-0 right-0 w-1.5 h-1/2 group-hover:h-full bg-space-purple rounded-lg transition-all duration-300"></div>
 
-                {/* Small square at top left */}
-                {/* <div className="absolute top-4 left-4 w-5 h-5 bg-black rounded-sm"></div> */}
                 <div className="relative flex items-center justify-center w-5 h-5 group cursor-pointer m-5">
                   <div className="absolute inset-0 rounded-full border-2 border-space-purple opacity-30 animate-pulse"></div>
                   <div className="absolute inset-0 rounded-full border border-space-purple opacity-20 transition-all duration-500 ease-out group-hover:scale-[2] group-hover:opacity-0"></div>

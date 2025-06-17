@@ -96,12 +96,15 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative z-10 py-32 px-6 overflow-hidden bg-purple-100"
+      className="relative z-10 py-32 px-6 overflow-hidden"
       style={{ marginTop: "100vh" }} // This creates space for the hero section
     >
-      <div ref={sectionRef} className="container mx-auto max-w-7xl">
-        <div className="text-center mb-20">
-          <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900 mb-8 tracking-tight">
+      <div
+        ref={sectionRef}
+        className="container mx-auto max-w-7xl  bg-purple-100 w-[95%] h-fit p-20  rounded-3xl flex flex-col justify-center items-center "
+      >
+        <div className="text-center">
+          <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900  tracking-tight">
             What defines our purpose?
           </h2>
 
@@ -112,7 +115,7 @@ const AboutSection = () => {
               animationDelay: "0.2s",
             }}
           >
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-space-purple to-transparent" />
+           
           </div>
         </div>
 
