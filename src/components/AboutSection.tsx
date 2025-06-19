@@ -101,7 +101,8 @@ const AboutSection = () => {
     >
       <div
         ref={sectionRef}
-        className="container mx-auto max-w-7xl  bg-purple-100 w-[95%] h-fit p-20  rounded-3xl flex flex-col justify-center items-center "
+        // Increased vertical padding (py-40) for a bigger section, from p-20
+        className="mx-auto bg-purple-100 w-full h-fit p-20 py-40 rounded-3xl flex flex-col justify-center items-center "
       >
         <div className="text-center">
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900  tracking-tight">
@@ -114,9 +115,7 @@ const AboutSection = () => {
             style={{
               animationDelay: "0.2s",
             }}
-          >
-           
-          </div>
+          ></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -174,35 +173,47 @@ const AboutSection = () => {
           </div>
 
           <div
-            className="animate-on-scroll space-y-8"
+            className="animate-on-scroll space-y-8 shadow-xl p-8 rounded-lg bg-cover bg-center relative" // Added 'relative' for absolute overlay
             style={{
+              backgroundImage: "url('/lovable-uploads/planet.png')",
               animationDelay: "0.4s",
             }}
           >
-            <h3 className="font-montserrat font-semibold text-3xl text-gray-900 tracking-tight">
+            {/* Overlay for background image opacity */}
+            <div className="absolute inset-0 bg-white opacity-70 rounded-lg"></div> {/* White overlay with 30% opacity */}
+
+            <h3 className="font-montserrat font-semibold text-3xl text-gray-900 tracking-tight relative z-10"> {/* Added z-10 to bring text above overlay */}
               Crafting Digital Excellence
             </h3>
 
-            <div className="space-y-6 font-lato font-light text-lg leading-relaxed">
-              <p className="text-gray-700">
-                N&i is a premium web development company dedicated to creating
-                extraordinary digital experiences. We combine cutting-edge
-                technology with artistic vision to deliver websites that don't
-                just look stunning—they perform exceptionally.
-              </p>
-
-              <p className="text-gray-700">
-                Our mission is to transform your digital presence into a
-                powerful business asset. Every project we undertake is crafted
-                with meticulous attention to detail, ensuring your brand stands
-                out in the digital landscape.
-              </p>
-
-              <p className="text-gray-700">
-                From concept to launch, we work closely with our clients to
-                understand their unique vision and translate it into a digital
-                masterpiece that drives engagement and delivers results.
-              </p>
+            <div className="space-y-6 font-lato font-normal text-lg leading-relaxed relative z-10"> {/* Added z-10 to bring text above overlay */}
+              <ul className="list-disc pl-5 text-purple-500">
+                <li>
+                  <p className="text-gray-700">
+                    N&i is a premium web development company dedicated to
+                    creating extraordinary digital experiences. We combine
+                    cutting-edge technology with artistic vision to deliver
+                    websites that don't just look stunning—they perform
+                    exceptionally.
+                  </p>
+                </li>
+                <li>
+                  <p className="text-gray-700">
+                    Our mission is to transform your digital presence into a
+                    powerful business asset. Every project we undertake is
+                    crafted with meticulous attention to detail, ensuring your
+                    brand stands out in the digital landscape.
+                  </p>
+                </li>
+                <li>
+                  <p className="text-gray-700">
+                    From concept to launch, we work closely with our clients to
+                    understand their unique vision and translate it into a
+                    digital masterpiece that drives engagement and delivers
+                    results.
+                  </p>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

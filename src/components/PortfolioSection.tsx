@@ -2,17 +2,15 @@ import { useState, useEffect, useRef } from "react";
 import {
   ArrowLeft,
   ArrowRight,
-  BoxIcon,
-  ChevronLeft,
-  ChevronRight,
-  SquareArrowOutUpRight,
-  SquareArrowUpRight,
+  SquareArrowOutUpRight, // For the "view project" link
+  // Plus, // No longer needed as "Mehr Erfahren" is removed
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const PortfolioSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+
   const portfolioItems = [
     {
       title: "E-Commerce Platform",
@@ -21,6 +19,14 @@ const PortfolioSection = () => {
       category: "E-Commerce",
       description:
         "A modern e-commerce platform with advanced filtering, payment integration, and user management.",
+      mainStatDescription: "Umsatzsteigerung um",
+      stats: {
+        performance: 92,
+        accessibility: 98,
+        bestPractices: 95,
+        seo: 90,
+      },
+      projectLink: "/project/e-commerce-platform", // Example link
     },
     {
       title: "Corporate Website",
@@ -28,7 +34,15 @@ const PortfolioSection = () => {
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       category: "Corporate",
       description:
-        "A modern e-commerce platform with advanced filtering, payment integration, and user management.",
+        "A sleek and professional online presence designed for large enterprises, focusing on brand identity and lead generation.",
+      mainStatDescription: "Markenbekanntheit erhöht um",
+      stats: {
+        performance: 88,
+        accessibility: 95,
+        bestPractices: 92,
+        seo: 94,
+      },
+      projectLink: "/project/corporate-website",
     },
     {
       title: "SaaS Platform",
@@ -36,7 +50,15 @@ const PortfolioSection = () => {
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       category: "SaaS",
       description:
-        "A modern e-commerce platform with advanced filtering, payment integration, and user management.",
+        "An intuitive and scalable Software-as-a-Service solution, enhancing user productivity and workflow automation.",
+      mainStatDescription: "Prozessoptimierung um",
+      stats: {
+        performance: 95,
+        accessibility: 96,
+        bestPractices: 98,
+        seo: 92,
+      },
+      projectLink: "/project/saas-platform",
     },
     {
       title: "Portfolio Site",
@@ -44,9 +66,18 @@ const PortfolioSection = () => {
         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       category: "Portfolio",
       description:
-        "A modern e-commerce platform with advanced filtering, payment integration, and user management.",
+        "A personal portfolio website showcasing creative works with elegant design and seamless navigation.",
+      mainStatDescription: "Besucherbindung gesteigert um",
+      stats: {
+        performance: 97,
+        accessibility: 99,
+        bestPractices: 99,
+        seo: 97,
+      },
+      projectLink: "/project/portfolio-site",
     },
   ];
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,6 +95,7 @@ const PortfolioSection = () => {
     elements?.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % portfolioItems.length);
   };
@@ -72,6 +104,14 @@ const PortfolioSection = () => {
       (prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length
     );
   };
+
+  // Helper function to get color based on score (e.g., for progress bars)
+  const getScoreColor = (score: number) => {
+    if (score >= 90) return "bg-green-500";
+    if (score >= 70) return "bg-yellow-500";
+    return "bg-red-500";
+  };
+
   return (
     <section id="portfolio" className="py-32 px-6 relative overflow-hidden">
       <div ref={sectionRef} className="container mx-auto max-w-7xl">
@@ -98,31 +138,27 @@ const PortfolioSection = () => {
         >
           <div className="relative w-full md:w-5/6 mx-auto">
             <div className="overflow-hidden rounded-3xl h-[80%]">
-              {/* Navigations */}
+              {/* Navigations - Visible on all screens */}
               <div className="absolute top-0 left-0 flex w-full items-center justify-between mt-4 bg-transparent px-4 z-10">
-                {/* Arrows for larger screens */}
-                <div className="hidden md:flex items-center space-x-4">
+                {/* Arrows and slide counter */}
+                <div className="flex items-center space-x-4">
                   <button
                     onClick={prevSlide}
-                    className="p-4 rounded-full border bg-space-gradient-start border-space-purple/30 text-white hover:bg-space-purple/50 transition-colors duration-300"
+                    className="p-3 md:p-4 rounded-full border bg-space-gradient-start border-space-purple/30 text-white hover:bg-space-purple/50 transition-colors duration-300"
                   >
-                    <ArrowLeft size={20} />
+                    <ArrowLeft size={18} />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="p-4 ml-0 rounded-full border bg-space-gradient-start border-space-purple/30 text-white hover:bg-space-purple/50 transition-colors duration-300"
+                    className="p-3 md:p-4 rounded-full border bg-space-gradient-start border-space-purple/30 text-white hover:bg-space-purple/50 transition-colors duration-300"
                   >
-                    <ArrowRight size={20} />
+                    <ArrowRight size={18} />
                   </button>
-                  <div className="font-montserrat font-bold text-white text-lg">
+                  <div className="font-montserrat font-bold text-white text-base md:text-lg">
                     {String(currentSlide + 1).padStart(2, "0")} /{" "}
                     {String(portfolioItems.length).padStart(2, "0")}
                   </div>
                 </div>
-
-                <button className="hidden md:block text-white/70 bg-space-purple/60 hover:bg-white/10 hover:shadow-lg hover:shadow-space-purple/20 transition-all duration-300 p-2.5 rounded-md backdrop-blur-sm">
-                  <SquareArrowOutUpRight size={25} />
-                </button>
               </div>
 
               {/* Content */}
@@ -140,48 +176,128 @@ const PortfolioSection = () => {
                       className="w-full h-full object-cover min-h-[300px] md:min-h-[400px] lg:min-h-[500px]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-space-dark/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 bg-gray-950 w-auto md:w-3/4 h-auto rounded-2xl p-3">
-                      <h3 className="font-montserrat font-semibold text-xl text-white">
-                        <div className="flex items-center justify-between">
-                          {item.title}{" "}
-                          <div className="h-7 w-7 bg-blue-500 rounded-sm"></div>
-                        </div>
+
+                    {/* Short Description & Project Link for Small Screens */}
+                    <div className="absolute bottom-6 left-6 right-6 bg-gray-950/80 backdrop-blur-sm rounded-2xl p-4 md:hidden text-white">
+                      {/* Project Title & Category for small screens */}
+                      <h3 className="font-montserrat font-semibold text-xl text-white mb-1">
+                        {item.title}
                       </h3>
-                      <span className="font-lato text-sm text-space-purple-light mb-2 block">
+                      <span className="font-lato text-sm text-space-purple-light mb-4 block">
                         {item.category}
                       </span>
-                      <p className="hidden md:block text-white">
+
+                      <p className="font-lato text-sm mb-4">
                         {item.description}
                       </p>
+                      <Link
+                        to={item.projectLink}
+                        className="flex items-center gap-2 text-purple-400 font-semibold text-lg hover:text-purple-300 transition-colors duration-200 group"
+                      >
+                        VIEW PROJECT
+                        <SquareArrowOutUpRight className="group-hover:translate-x-1 transition-transform duration-200" size={20} />
+                      </Link>
+                    </div>
+
+                    {/* Detailed Stats Box for Medium and Larger Screens */}
+                    <div className="absolute bottom-6 left-6 right-6 p-6 bg-gray-950 rounded-2xl shadow-lg w-auto md:w-[500px] flex-col gap-4 hidden md:flex">
+                      {/* Top section: Main stat description and decorative elements */}
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="text-gray-300 font-lato text-base md:text-lg">
+                          {item.mainStatDescription}
+                        </p>
+                        <div className="flex space-x-2">
+                          <div className="h-6 w-6 bg-[#212137] rounded-md" /> {/* Dark decorative square */}
+                          {/* Replaced white square with SquareArrowOutUpRight button */}
+                          <Link
+                            to={item.projectLink}
+                            target="_blank" // Opens in a new tab
+                            rel="noopener noreferrer"
+                            className="p-1 rounded-md bg-white/10 text-white/70 hover:bg-white/20 hover:text-white transition-colors duration-300"
+                          >
+                            <SquareArrowOutUpRight size={20} />
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Grid for all stats */}
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                        {/* Performance - Most prominent */}
+                        <div className="col-span-2">
+                          <p className="text-gray-400 text-sm">Performance</p>
+                          <div className="flex items-center">
+                            <span className="font-montserrat font-bold text-4xl text-white mr-2">
+                              {item.stats.performance}%
+                            </span>
+                            <div className="w-24 h-3 rounded-full bg-gray-700 overflow-hidden">
+                              <div
+                                className={`h-full ${getScoreColor(item.stats.performance)}`}
+                                style={{ width: `${item.stats.performance}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Other stats - Smaller */}
+                        <div className="flex flex-col">
+                          <p className="text-gray-400 text-sm">Accessibility</p>
+                          <div className="flex items-center">
+                            <span className="font-lato font-bold text-lg text-white mr-1">
+                              {item.stats.accessibility}%
+                            </span>
+                            <div className="w-16 h-2 rounded-full bg-gray-700 overflow-hidden">
+                              <div
+                                className={`h-full ${getScoreColor(item.stats.accessibility)}`}
+                                style={{ width: `${item.stats.accessibility}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col">
+                          <p className="text-gray-400 text-sm">Best Practices</p>
+                          <div className="flex items-center">
+                            <span className="font-lato font-bold text-lg text-white mr-1">
+                              {item.stats.bestPractices}%
+                            </span>
+                            <div className="w-16 h-2 rounded-full bg-gray-700 overflow-hidden">
+                              <div
+                                className={`h-full ${getScoreColor(item.stats.bestPractices)}`}
+                                style={{ width: `${item.stats.bestPractices}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col">
+                          <p className="text-gray-400 text-sm">SEO</p>
+                          <div className="flex items-center">
+                            <span className="font-lato font-bold text-lg text-white mr-1">
+                              {item.stats.seo}%
+                            </span>
+                            <div className="w-16 h-2 rounded-full bg-gray-700 overflow-hidden">
+                              <div
+                                className={`h-full ${getScoreColor(item.stats.seo)}`}
+                                style={{ width: `${item.stats.seo}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Project Title & Category at the bottom for large screens */}
+                      <div className="mt-4 pt-4 border-t border-gray-800">
+                        <h3 className="font-montserrat font-semibold text-xl text-white mb-1">
+                          {item.title}
+                        </h3>
+                        <span className="font-lato text-sm text-space-purple-light block">
+                          {item.category}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
-            {/* Arrows and current slide for small screens */}
-            <div className="flex justify-between items-center mt-6 md:hidden px-4">
-              <button
-                onClick={prevSlide}
-                className="p-3 rounded-full border bg-space-gradient-start border-space-purple/30 text-white hover:bg-space-purple/50 transition-colors duration-300"
-              >
-                <ArrowLeft size={18} />
-              </button>
-              <div className="font-montserrat font-bold text-white text-base">
-                {String(currentSlide + 1).padStart(2, "0")} /{" "}
-                {String(portfolioItems.length).padStart(2, "0")}
-              </div>
-              <button
-                onClick={nextSlide}
-                className="p-3 rounded-full border bg-space-gradient-start border-space-purple/30 text-white hover:bg-space-purple/50 transition-colors duration-300"
-              >
-                <ArrowRight size={18} />
-              </button>
-            </div>
-            {/* View project button for small screens */}
-            <div className="flex justify-end mt-4 md:hidden px-4">
-              <button className="text-white/70 bg-space-purple/60 hover:bg-white/10 hover:shadow-lg hover:shadow-space-purple/20 transition-all duration-300 p-2 rounded-md backdrop-blur-sm">
-                <SquareArrowOutUpRight size={20} />
-              </button>
             </div>
           </div>
 
