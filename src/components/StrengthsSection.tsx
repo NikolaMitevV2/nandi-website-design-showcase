@@ -58,7 +58,7 @@ const StrengthsSection = () => {
     <section id="strengths" className="py-32 px-6 relative overflow-hidden">
       <div
         ref={sectionRef}
-        className="mx-auto bg-purple-100 rounded-3xl w-full h-fit p-20"
+        className="mx-auto bg-purple-100 rounded-3xl w-full h-fit sm:p-20 p-5 py-20"
       >
         <div className="text-center mb-20">
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900 mb-8 tracking-tight">
@@ -77,7 +77,7 @@ const StrengthsSection = () => {
           {strengths.map((strength, index) => (
             <div
               key={index} // Added a unique key for list rendering
-              className="relative max-w-[300px] h-96 rounded-lg overflow-hidden shadow-lg group transform transition-all duration-300 hover:scale-105  hover:shadow-2xl hover:shadow-space-purple/20 "
+              className="relative md:max-w-[300px] h-[60vh] md:h-96 rounded-lg overflow-hidden shadow-lg group transform transition-all duration-300 hover:scale-105  hover:shadow-2xl hover:shadow-space-purple/20 "
             >
               {/* Custom Border Design */}
               <div className="absolute inset-0 pointer-events-none z-20">

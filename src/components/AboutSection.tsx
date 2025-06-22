@@ -102,7 +102,7 @@ const AboutSection = () => {
       <div
         ref={sectionRef}
         // Increased vertical padding (py-40) for a bigger section, from p-20
-        className="mx-auto bg-purple-100 w-full h-fit p-20 py-40 rounded-3xl flex flex-col justify-center items-center "
+        className="mx-auto bg-purple-100 w-full h-fit sm:p-20 p-5 sm:py-40 py-20  rounded-3xl flex flex-col justify-center items-center "
       >
         <div className="text-center">
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900  tracking-tight">
@@ -168,10 +168,6 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <div className="lg:hidden flex justify-center my-8">
-            <div className="w-24 h-px bg-gradient-to-r from-transparent via-space-purple/50 to-transparent" />
-          </div>
-
           <div
             className="animate-on-scroll space-y-8 shadow-xl p-8 rounded-lg bg-cover bg-center relative" // Added 'relative' for absolute overlay
             style={{
@@ -180,13 +176,16 @@ const AboutSection = () => {
             }}
           >
             {/* Overlay for background image opacity */}
-            <div className="absolute inset-0 bg-white opacity-70 rounded-lg"></div> {/* White overlay with 30% opacity */}
-
-            <h3 className="font-montserrat font-semibold text-3xl text-gray-900 tracking-tight relative z-10"> {/* Added z-10 to bring text above overlay */}
+            <div className="absolute inset-0 bg-white opacity-70 rounded-lg sm:"></div>{" "}
+            {/* White overlay with 30% opacity */}
+            <h3 className="font-montserrat font-semibold text-3xl text-gray-900 tracking-tight relative z-10">
+              {" "}
+              {/* Added z-10 to bring text above overlay */}
               Crafting Digital Excellence
             </h3>
-
-            <div className="space-y-6 font-lato font-normal text-lg leading-relaxed relative z-10"> {/* Added z-10 to bring text above overlay */}
+            <div className="space-y-6 font-lato font-normal text-lg leading-relaxed relative z-10">
+              {" "}
+              {/* Added z-10 to bring text above overlay */}
               <ul className="list-disc pl-5 text-purple-500">
                 <li>
                   <p className="text-gray-700">

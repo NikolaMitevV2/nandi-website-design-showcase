@@ -89,7 +89,7 @@ const HeroSection = () => {
     >
       <div
         ref={splineRef}
-        className="absolute top-0 left-0 w-full h-[130vh] -z-10" // Spline as fixed background
+        className="absolute top-0 left-0 w-full h-[130vh] -z-10" // Spline height is unchanged
         style={{ willChange: "transform" }}
       >
         <iframe
@@ -107,20 +107,24 @@ const HeroSection = () => {
       {/* Foreground content */}
       <div
         ref={heroRef}
-        className="text-left z-20 px-6 flex flex-col flex-grow relative"
+        // Mobile-only centering for text and items, reverts to left on sm+
+        className="z-20 px-6 flex flex-col flex-grow relative min-h-0
+                   text-center sm:text-left // Centered on mobile, left on sm+
+                   items-center sm:items-start // Center items on mobile, start on sm+
+                   justify-center sm:justify-start pt-8 sm:pt-0" // Adjusted pt for mobile, removed vertical centering on desktop
       >
-        <h1 className="font-montserrat font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] text-white mb-6 tracking-tight">
+        <h1 className="font-montserrat font-bold text-6xl xs:text-7xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] text-white mb-6 tracking-tight"> {/* Increased base text size significantly for mobile */}
           Websites
           <br />
-          <span className="bg-gradient-to-r w-fit from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent w-fit">
             &lt;/&gt;That Drive
           </span>
           <br />
           <span>Revenue</span>
         </h1>
-        <div>
+        <div className="flex flex-col items-center sm:items-start"> {/* Flex container to center paragraph and button */}
           <p
-            className="font-lato opacity-90 text-base md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed"
+            className="font-lato opacity-90 text-base md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed" // Paragraph text size unchanged from original for mobile
             style={{ animationDelay: "0.2s" }}
           >
             We build high-performing websites engineered to convert visitors
@@ -135,73 +139,231 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* Dynamic Grid Element for Key Values - Designed to match image_b0aee7.png */}
+        {/* Dynamic Grid Element for Key Values - Hidden on smallest screens */}
         <div
           ref={statsGridRef}
-          className="absolute bottom-10 right-6
-                     w-[280px] sm:w-[400px] md:w-[560px] lg:w-[680px] xl:w-[800px] h-auto p-2 rounded-lg
-                     bg-gray-900/20 backdrop-blur-sm opacity-70 overflow-hidden
-                     hidden sm:grid                       
-                     grid-cols-3 grid-rows-3 gap-2 md:gap-3 
-                     auto-rows-fr
-                     pointer-events-none"
+          className="absolute bottom-6 right-4
+           w-[240px] xs:w-[300px] sm:w-[350px] md:w-[480px] lg:w-[580px] xl:w-[700px] h-auto p-2 rounded-2xl
+           bg-gray-900/30 backdrop-blur-md opacity-95 overflow-hidden
+           hidden sm:grid
+           grid-cols-4 grid-rows-4 gap-2 md:gap-3
+           auto-rows-fr
+           pointer-events-none
+           border border-white/10"
           style={{
-            transform: "translateZ(0)", // Optimize for hardware acceleration with GSAP
-            willChange: "transform", // Hint for browser optimization
+            transform: "translateZ(0)",
+            willChange: "transform",
           }}
         >
-          {/* Item 1: Drive Revenue (Corresponds to large green block, 2x2, Top-Left) */}
-          <div className="col-span-2 row-span-2 p-3 md:p-4 rounded-md bg-white/5 text-white/90 flex flex-col justify-center">
-            <h3 className="font-montserrat font-semibold text-lg sm:text-xl lg:text-2xl mb-1">
-              Drive Revenue
-            </h3>
-            <p className="font-lato text-xs sm:text-sm text-white/70">
-              Websites engineered for maximum conversions and accelerated
-              growth.
+          {/* Hero Statement - Top spanning element that tells the story */}
+          <div
+            className="col-span-4 row-span-1 p-2 sm:p-3 rounded-xl bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white/95
+                       flex flex-col justify-center items-center text-center shadow-lg border border-purple-400/20
+                       hover:scale-[1.02] transition-all duration-300 group"
+          >
+            <div className="flex items-center gap-2 mb-0.5">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <h3 className="font-montserrat font-bold text-sm sm:text-base lg:text-lg">
+                Ready to Build Revenue-Driving Websites
+              </h3>
+            </div>
+            <p className="font-lato text-xs text-white/70">
+              From concept to conversion - we handle the complete journey
             </p>
           </div>
 
-          {/* Item 2: Agile Development (Corresponds to top-right light blue block, 1x1) */}
-          {/* Explicitly positioned: col-start-3, row-start-1 */}
-          <div className="col-start-3 row-start-1 p-3 md:p-4 rounded-md bg-white/5 text-white/90 flex flex-col justify-center">
-            <h3 className="font-montserrat font-semibold text-base sm:text-lg mb-1">
-              Agile Development
-            </h3>
-            <p className="font-lato text-[0.6rem] sm:text-xs text-white/70">
-              Flexible, iterative, and rapid delivery.
+          {/* Our Process - Left side story flow */}
+          <div
+            className="col-span-2 row-span-2 p-2 sm:p-3 rounded-xl bg-gradient-to-br from-blue-500/15 to-purple-500/15 text-white/90
+                       flex flex-col justify-between shadow-lg border border-blue-400/20
+                       hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 group"
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <svg
+                  className="w-4 h-4 text-blue-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                <h3 className="font-montserrat font-bold text-base sm:text-lg">
+                  Our Process
+                </h3>
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-1 text-xs">
+                  <span className="w-4 h-4 bg-purple-500/30 rounded-full flex items-center justify-center text-[0.6rem] font-bold">
+                    1
+                  </span>
+                  <span className="font-lato text-white/80">
+                    Discovery & Strategy
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-xs">
+                  <span className="w-4 h-4 bg-purple-500/30 rounded-full flex items-center justify-center text-[0.6rem] font-bold">
+                    2
+                  </span>
+                  <span className="font-lato text-white/80">
+                    Design & Develop
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-xs">
+                  <span className="w-4 h-4 bg-purple-500/30 rounded-full flex items-center justify-center text-[0.6rem] font-bold">
+                    3
+                  </span>
+                  <span className="font-lato text-white/80">
+                    Launch & Optimize
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-2 p-1 bg-white/5 rounded-lg">
+              <p className="font-lato text-xs text-white/70">
+                Transparent communication every step of the way
+              </p>
+            </div>
+          </div>
+
+          {/* Tech Stack - Prominent but refined */}
+          <div
+            className="col-span-2 row-span-1 p-2 sm:p-3 rounded-xl bg-gradient-to-r from-violet-500/15 to-pink-500/15 text-white/90
+                       flex flex-col justify-center shadow-lg border border-violet-400/20
+                       hover:scale-[1.02] transition-all duration-300"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <svg
+                className="w-4 h-4 text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+              <h3 className="font-montserrat font-bold text-base sm:text-lg">
+                Modern Tech Stack
+              </h3>
+            </div>
+            <div className="flex flex-wrap gap-1 sm:gap-1.5">
+              <span className="px-1.5 py-0.5 bg-blue-500/20 rounded-md text-[0.65rem] sm:text-xs font-medium">
+                React
+              </span>
+              <span className="px-1.5 py-0.5 bg-green-500/20 rounded-md text-[0.65rem] sm:text-xs font-medium">
+                Node.js
+              </span>
+              <span className="px-1.5 py-0.5 bg-purple-500/20 rounded-md text-[0.65rem] sm:text-xs font-medium">
+                Tailwind
+              </span>
+            </div>
+          </div>
+
+          {/* Why Choose Us - Value proposition */}
+          <div
+            className="col-span-2 row-span-1 p-2 sm:p-3 rounded-xl bg-gradient-to-r from-emerald-500/15 to-teal-500/15 text-white/90
+                       flex flex-col justify-center shadow-lg border border-emerald-400/20
+                       hover:scale-[1.02] transition-all duration-300"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <svg
+                className="w-4 h-4 text-emerald-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h3 className="font-montserrat font-bold text-base sm:text-lg">
+                Why Choose Us
+              </h3>
+            </div>
+            <p className="font-lato text-xs text-white/80">
+              <span className="text-emerald-300 font-semibold">
+                Fast delivery
+              </span>
+              ,
+              <span className="text-emerald-300 font-semibold">
+                {" "}
+                scalable code
+              </span>
+              ,
+              <span className="text-emerald-300 font-semibold">
+                {" "}
+                ongoing support
+              </span>
             </p>
           </div>
 
-          {/* Item 3: Modern Tech Stack (Corresponds to middle-right orange block, 1x2) */}
-          {/* Explicitly positioned: col-start-3, row-start-2 */}
-          <div className="col-start-3 row-start-2 row-span-2 p-3 md:p-4 rounded-md bg-white/5 text-white/90 flex flex-col justify-center">
-            <h3 className="font-montserrat font-semibold text-base sm:text-lg mb-1">
-              Modern Tech Stack
-            </h3>
-            <p className="font-lato text-[0.6rem] sm:text-xs text-white/70">
-              Leveraging cutting-edge technologies for robust solutions.
+          {/* Team Credentials - Building trust */}
+          <div
+            className="col-span-1 row-span-1 p-2 sm:p-3 rounded-xl bg-gradient-to-br from-orange-500/15 to-red-500/15 text-white/90
+                       flex flex-col justify-center items-center text-center shadow-lg border border-orange-400/20
+                       hover:scale-[1.05] transition-all duration-300"
+          >
+            <div className="w-6 h-6 sm:w-7 sm:h-7 bg-orange-500/30 rounded-full flex items-center justify-center mb-1">
+              <svg
+                className="w-3 h-3 text-orange-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                />
+              </svg>
+            </div>
+            <h4 className="font-montserrat font-semibold text-xs mb-0.5">
+              Expert Team
+            </h4>
+            <p className="font-lato text-[0.6rem] text-white/70">
+              5+ years combined experience
             </p>
           </div>
 
-          {/* Item 4: Transparent Process (Corresponds to bottom-left pink block, 1x1) */}
-          {/* Explicitly positioned: col-start-1, row-start-3 */}
-          <div className="col-start-1 row-start-3 p-3 md:p-4 rounded-md bg-white/5 text-white/90 flex flex-col justify-center">
-            <h3 className="font-montserrat font-semibold text-base sm:text-lg mb-1">
-              Transparent Process
-            </h3>
-            <p className="font-lato text-[0.6rem] sm:text-xs text-white/70">
-              Clear communication & collaborative partnerships.
-            </p>
-          </div>
-
-          {/* Item 5: User-Centric Design (Corresponds to bottom-middle dark grey block, 1x1) */}
-          {/* Explicitly positioned: col-start-2, row-start-3 */}
-          <div className="col-start-2 row-start-3 p-3 md:p-4 rounded-md bg-white/5 text-white/90 flex flex-col justify-center">
-            <h3 className="font-montserrat font-semibold text-base sm:text-lg mb-1">
-              User-Centric Design
-            </h3>
-            <p className="font-lato text-[0.6rem] sm:text-xs text-white/70">
-              Crafting intuitive experiences that delight your audience.
+          {/* Guarantee/Promise */}
+          <div
+            className="col-span-1 row-span-1 p-2 sm:p-3 rounded-xl bg-gradient-to-br from-pink-500/15 to-rose-500/15 text-white/90
+                       flex flex-col justify-center items-center text-center shadow-lg border border-pink-400/20
+                       hover:scale-[1.05] transition-all duration-300"
+          >
+            <div className="w-6 h-6 sm:w-7 sm:h-7 bg-pink-500/30 rounded-full flex items-center justify-center mb-1">
+              <svg
+                className="w-3 h-3 text-pink-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h4 className="font-montserrat font-semibold text-xs mb-0.5">
+              Quick Start
+            </h4>
+            <p className="font-lato text-[0.6rem] text-white/70">
+              Projects start within 48hrs
             </p>
           </div>
         </div>
