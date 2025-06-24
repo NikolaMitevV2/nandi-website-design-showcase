@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,9 +25,6 @@ const HeroSection = () => {
         start: "bottom center", // Start fading when the bottom of the section hits the center of the viewport
         end: "bottom top", // Fully faded when the bottom of the section hits the top of the viewport
         scrub: true,
-        // pin: true, // You can uncomment this if you want the section to "pin" for a while before fading
-        // pinSpacing: false, // Prevents adding extra scroll space if pin is true
-        // markers: true, // Uncomment for debugging ScrollTrigger
       },
     });
 
@@ -74,11 +72,9 @@ const HeroSection = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
   const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/contact");
   };
 
   return (
@@ -109,13 +105,12 @@ const HeroSection = () => {
        <div className="w-[80%] h-auto">
       <div
         ref={heroRef}
-        // Mobile-only centering for text and items, reverts to left on sm+
         className="z-20 px-6 flex flex-col flex-grow relative min-h-0
                    text-center sm:text-left // Centered on mobile, left on sm+
                    items-center sm:items-start // Center items on mobile, start on sm+
                    justify-center sm:justify-start pt-8 sm:pt-0" // Adjusted pt for mobile, removed vertical centering on desktop
       >
-        <h1 className="font-montserrat font-bold text-6xl xs:text-7xl sm:text-6xl md:text-7xl lg:text-9xl xl:text-[6rem] text-white mb-6 tracking-tight"> {/* Increased base text size significantly for mobile */}
+        <h1 className="font-montserrat font-bold text-6xl xs:text-7xl sm:text-6xl md:text-7xl lg:text-9xl xl:text-[6rem] text-white mb-10 tracking-tight"> {/* Increased base text size significantly for mobile */}
           Websites
           <br />
           <span className="bg-gradient-to-r from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent w-fit">
@@ -124,7 +119,9 @@ const HeroSection = () => {
           <br />
           <span>Revenue</span>
         </h1>
-        <div className="flex flex-col items-center sm:items-start"> {/* Flex container to center paragraph and button */}
+        <div className="flex flex-col items-center sm:items-start">
+          {" "}
+          {/* Flex container to center paragraph and button */}
           <p
             className="font-lato opacity-90 text-base md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed" // Paragraph text size unchanged from original for mobile
             style={{ animationDelay: "0.2s" }}
@@ -213,7 +210,7 @@ const HeroSection = () => {
                     2
                   </span>
                   <span className="font-lato text-white/80">
-                    Design & Develop
+                    Design & Prototyping
                   </span>
                 </div>
                 <div className="flex items-center gap-1 text-xs">
@@ -221,13 +218,21 @@ const HeroSection = () => {
                     3
                   </span>
                   <span className="font-lato text-white/80">
-                    Launch & Optimize
+                    Development & Testing
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-xs">
+                  <span className="w-4 h-4 bg-purple-500/30 rounded-full flex items-center justify-center text-[0.6rem] font-bold">
+                    4
+                  </span>
+                  <span className="font-lato text-white/80">
+                    Launch & Optimization
                   </span>
                 </div>
               </div>
             </div>
             <div className="mt-2 p-1 bg-white/5 rounded-lg">
-              <p className="font-lato text-xs text-white/70">
+              <p className="font-lato text-xs text-white/70 p-2">
                 Transparent communication every step of the way
               </p>
             </div>
@@ -336,7 +341,7 @@ const HeroSection = () => {
               Expert Team
             </h4>
             <p className="font-lato text-[0.6rem] text-white/70">
-              5+ years combined experience
+              7+ years combined experience
             </p>
           </div>
 
