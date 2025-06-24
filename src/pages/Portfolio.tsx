@@ -9,40 +9,40 @@ const Portfolio = () => {
 
   const portfolioItems = [
     {
-      title: 'E-Commerce Platform',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      category: 'E-Commerce',
-      description: 'A modern e-commerce platform with advanced filtering, payment integration, and user management.'
+      title: 'Digi Craft',
+      image: '/portfolioHero/1.png',
+      category: 'Web Design Agency',
+      description: 'A company that design modern websites.'
     },
     {
-      title: 'Corporate Website',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      category: 'Corporate',
-      description: 'Professional corporate website with custom CMS and responsive design across all devices.'
+      title: 'Template Forge',
+      image: '/portfolioHero/2.png',
+      category: 'Template Design Agency',
+      description: 'Professional corporate website that creates templates with custom CMS and responsive design across all devices.'
     },
     {
-      title: 'SaaS Platform',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      category: 'SaaS',
-      description: 'Cloud-based SaaS platform with real-time analytics and seamless user experience.'
+      title: 'Elite Roofing',
+      image: '/portfolioHero/3.png',
+      category: 'Roofing Company',
+      description: 'A roofing company based in SF'
     },
     {
-      title: 'Portfolio Site',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      category: 'Portfolio',
-      description: 'Creative portfolio website showcasing artistic works with interactive galleries.'
+      title: 'KlackX',
+      image: '/portfolioHero/4.png',
+      category: 'Crypto Website',
+      description: 'A website showing various exchanges between crypto currencies'
     },
     {
-      title: 'Mobile App Landing',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      category: 'Mobile',
-      description: 'Landing page for mobile application with app store integration and user testimonials.'
+      title: 'N&I Portfolio - Old',
+      image: '/portfolioHero/5.png',
+      category: 'Portfolio Website',
+      description: 'Website for an Agency based in Macedonia'
     },
     {
-      title: 'Restaurant Website',
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      category: 'Restaurant',
-      description: 'Restaurant website with online ordering system and reservation management.'
+      title: 'Soleginx',
+      image: '/portfolioHero/6.png',
+      category: 'Solar Panel Installation',
+      description: 'A Website for a Solar Panel Installation company'
     }
   ];
 
@@ -73,7 +73,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen ">
       <section className="py-32 px-6 relative overflow-hidden">
         <div ref={sectionRef} className="container mx-auto max-w-7xl">
           <div className="mb-12">
@@ -101,15 +101,11 @@ const Portfolio = () => {
                   <img src={item.image} alt={item.title} className="w-full h-64 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-space-dark/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
-                    <span className="font-lato text-sm text-space-purple-light mb-2 block">
-                      {item.category}
-                    </span>
+                   
                     <h3 className="font-montserrat font-semibold text-xl text-white mb-2">
                       {item.title}
                     </h3>
-                    <p className="font-lato font-light text-sm text-gray-300">
-                      {item.description}
-                    </p>
+                 
                   </div>
                 </div>
               </div>

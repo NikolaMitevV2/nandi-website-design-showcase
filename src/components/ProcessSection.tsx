@@ -15,7 +15,7 @@ const ProcessSection = () => {
       description:
         "We begin by understanding your business goals, target audience, and project requirements to create a comprehensive strategy.",
       image:
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        "/designstrat/lightbulb.jpg",
       number: "01",
     },
     {
@@ -23,7 +23,7 @@ const ProcessSection = () => {
       description:
         "Our design team creates stunning visual concepts and interactive prototypes that bring your vision to life.",
       image:
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        "/designstrat/rocketmal.jpg",
       number: "02",
     },
     {
@@ -31,7 +31,7 @@ const ProcessSection = () => {
       description:
         "We build your website using cutting-edge technologies, ensuring optimal performance and thorough testing.",
       image:
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        "/designstrat/straf.jpg",
       number: "03",
     },
     {
@@ -39,7 +39,7 @@ const ProcessSection = () => {
       description:
         "After launch, we monitor performance and continuously optimize to ensure your website delivers exceptional results.",
       image:
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+        "/designstrat/vrtka.jpg",
       number: "04",
     },
   ];

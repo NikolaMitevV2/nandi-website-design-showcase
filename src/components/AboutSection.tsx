@@ -96,13 +96,13 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative z-10 py-32 px-6 overflow-hidden"
+      className="relative z-10 pt-32 px-6 overflow-hidden"
       style={{ marginTop: "100vh" }} // This creates space for the hero section
     >
       <div
         ref={sectionRef}
         // Increased vertical padding (py-40) for a bigger section, from p-20
-        className="mx-auto bg-purple-100 w-full h-fit sm:p-20 p-5 sm:py-40 py-20  rounded-3xl flex flex-col justify-center items-center "
+        className="mx-auto bg-purple-100 w-full h-fit sm:p-20 p-5 sm:py-40 py-20  rounded-t-3xl flex flex-col justify-center items-center "
       >
         <div className="text-center">
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-gray-900  tracking-tight">
