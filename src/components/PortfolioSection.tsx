@@ -1,10 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  SquareArrowOutUpRight, // For the "view project" link
-  // Plus, // No longer needed as "Mehr Erfahren" is removed
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const PortfolioSection = () => {
@@ -13,26 +8,24 @@ const PortfolioSection = () => {
 
   const portfolioItems = [
     {
-      title: "E-Commerce Platform",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      category: "E-Commerce",
+      title: "Digital Branding",
+      image: "/lovable-uploads/site1.png",
+      category: "Branding",
       description:
         "A modern e-commerce platform with advanced filtering, payment integration, and user management.",
-      mainStatDescription: "Umsatzsteigerung um",
+      mainStatDescription: "",
       stats: {
         performance: 92,
         accessibility: 98,
         bestPractices: 95,
         seo: 90,
       },
-      projectLink: "/project/e-commerce-platform", // Example link
+      projectLink: "https://digicraft.vercel.app/",
     },
     {
-      title: "Corporate Website",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      category: "Corporate",
+      title: "Template Design",
+      image: "/lovable-uploads/site2.png",
+      category: "Web Design",
       description:
         "A sleek and professional online presence designed for large enterprises, focusing on brand identity and lead generation.",
       mainStatDescription: "Markenbekanntheit erhöht um",
@@ -42,13 +35,13 @@ const PortfolioSection = () => {
         bestPractices: 92,
         seo: 94,
       },
-      projectLink: "/project/corporate-website",
+      projectLink: "https://templateforge.vercel.app/",
     },
     {
-      title: "SaaS Platform",
+      title: "Web Design",
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      category: "SaaS",
+        "/lovable-uploads/site4.png",
+      category: "3D Web Design",
       description:
         "An intuitive and scalable Software-as-a-Service solution, enhancing user productivity and workflow automation.",
       mainStatDescription: "Prozessoptimierung um",
@@ -61,10 +54,10 @@ const PortfolioSection = () => {
       projectLink: "/project/saas-platform",
     },
     {
-      title: "Portfolio Site",
+      title: "Startup Identity",
       image:
-        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      category: "Portfolio",
+        "/lovable-uploads/site3.png",
+      category: "Branding",
       description:
         "A personal portfolio website showcasing creative works with elegant design and seamless navigation.",
       mainStatDescription: "Besucherbindung gesteigert um",
@@ -74,7 +67,7 @@ const PortfolioSection = () => {
         bestPractices: 99,
         seo: 97,
       },
-      projectLink: "/project/portfolio-site",
+      projectLink: "https://elite-roofing-sigma.vercel.app/",
     },
   ];
 
@@ -248,9 +241,6 @@ const PortfolioSection = () => {
                       </div>
                       {/* Grid for all stats */}
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-3">
-                        {" "}
-                        {/* Further adjusted gap-y for stats grid */}
-                        {/* Performance - Most prominent */}
                         <div className="col-span-2">
                           <p className="text-gray-400 text-sm">Performance</p>
                           <div className="flex items-center">
