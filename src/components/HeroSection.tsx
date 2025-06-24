@@ -85,9 +85,10 @@ const HeroSection = () => {
     <section
       id="home"
       ref={sectionRef} // Attach ref to the main section
-      className="fixed top-0 left-0 w-full min-h-screen flex flex-col pt-20 overflow-hidden z-0"
+      className="fixed top-0 left-0 w-full min-h-screen flex justify-center items-center flex-col pt-20 overflow-hidden z-0"
     >
-      <div
+     
+        <div
         ref={splineRef}
         className="absolute top-0 left-0 w-full h-[130vh] -z-10" // Spline height is unchanged
         style={{ willChange: "transform" }}
@@ -105,6 +106,7 @@ const HeroSection = () => {
       </div>
 
       {/* Foreground content */}
+       <div className="w-[80%] h-auto">
       <div
         ref={heroRef}
         // Mobile-only centering for text and items, reverts to left on sm+
@@ -113,7 +115,7 @@ const HeroSection = () => {
                    items-center sm:items-start // Center items on mobile, start on sm+
                    justify-center sm:justify-start pt-8 sm:pt-0" // Adjusted pt for mobile, removed vertical centering on desktop
       >
-        <h1 className="font-montserrat font-bold text-6xl xs:text-7xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] text-white mb-6 tracking-tight"> {/* Increased base text size significantly for mobile */}
+        <h1 className="font-montserrat font-bold text-6xl xs:text-7xl sm:text-6xl md:text-7xl lg:text-9xl xl:text-[6rem] text-white mb-6 tracking-tight"> {/* Increased base text size significantly for mobile */}
           Websites
           <br />
           <span className="bg-gradient-to-r from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent w-fit">
@@ -138,12 +140,12 @@ const HeroSection = () => {
             Get Started
           </button>
         </div>
-
+ </div>
         {/* Dynamic Grid Element for Key Values - Hidden on smallest screens */}
         <div
           ref={statsGridRef}
-          className="absolute bottom-6 right-4
-           w-[240px] xs:w-[300px] sm:w-[350px] md:w-[480px] lg:w-[580px] xl:w-[700px] h-auto p-2 rounded-2xl
+          className="absolute bottom-[50px] right-[200px]
+           w-[200px] xs:w-[240px] sm:w-[310px] md:w-[440px] lg:w-[540px] xl:w-[600px] h-[400px] p-2 rounded-2xl
            bg-gray-900/30 backdrop-blur-md opacity-95 overflow-hidden
            hidden sm:grid
            grid-cols-4 grid-rows-4 gap-2 md:gap-3
@@ -368,6 +370,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+     
+      
     </section>
   );
 };
