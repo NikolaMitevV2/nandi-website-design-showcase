@@ -81,10 +81,9 @@ const HeroSection = () => {
     <section
       id="home"
       ref={sectionRef} // Attach ref to the main section
-      className="fixed top-0 left-0 w-full min-h-screen flex justify-center items-center flex-col pt-20 overflow-hidden z-0"
+      className="fixed top-0 left-0 w-full min-h-screen flex flex-col pt-20 overflow-hidden z-0"
     >
-     
-        <div
+      <div
         ref={splineRef}
         className="absolute top-0 left-0 w-full h-[130vh] -z-10" // Spline height is unchanged
         style={{ willChange: "transform" }}
@@ -102,15 +101,15 @@ const HeroSection = () => {
       </div>
 
       {/* Foreground content */}
-       <div className="w-[80%] h-auto">
       <div
         ref={heroRef}
-        className="z-20 px-6 flex flex-col flex-grow relative min-h-0
-                   text-center sm:text-left // Centered on mobile, left on sm+
-                   items-center sm:items-start // Center items on mobile, start on sm+
-                   justify-center sm:justify-start pt-8 sm:pt-0" // Adjusted pt for mobile, removed vertical centering on desktop
+         className="z-20 px-6 flex flex-col flex-grow relative min-h-0
+             text-center lg:text-left
+             items-center md:items-center lg:items-start
+             justify-center md:justify-center lg:justify-start
+             pt-8 pl-0 md:pl-0 lg:pl-24 sm:pt-0"
       >
-        <h1 className="font-montserrat font-bold text-6xl xs:text-7xl sm:text-6xl md:text-7xl lg:text-9xl xl:text-[6rem] text-white mb-10 tracking-tight"> {/* Increased base text size significantly for mobile */}
+        <h1 className="font-montserrat font-bold text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-[9rem] text-white mb-6 tracking-tight">
           Websites
           <br />
           <span className="bg-gradient-to-r from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent w-fit">
@@ -119,9 +118,7 @@ const HeroSection = () => {
           <br />
           <span>Revenue</span>
         </h1>
-        <div className="flex flex-col items-center sm:items-start">
-          {" "}
-          {/* Flex container to center paragraph and button */}
+        <div className="flex flex-col items-center lg:items-start">
           <p
             className="font-lato opacity-90 text-base md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed" // Paragraph text size unchanged from original for mobile
             style={{ animationDelay: "0.2s" }}
@@ -137,22 +134,19 @@ const HeroSection = () => {
             Get Started
           </button>
         </div>
- </div>
+
         {/* Dynamic Grid Element for Key Values - Hidden on smallest screens */}
         <div
           ref={statsGridRef}
-          className="absolute bottom-[50px] right-[200px]
-           w-[200px] xs:w-[240px] sm:w-[310px] md:w-[440px] lg:w-[540px] xl:w-[600px] h-[400px] p-2 rounded-2xl
-           bg-gray-900/30 backdrop-blur-md opacity-95 overflow-hidden
-           hidden sm:grid
-           grid-cols-4 grid-rows-4 gap-2 md:gap-3
-           auto-rows-fr
-           pointer-events-none
-           border border-white/10"
-          style={{
-            transform: "translateZ(0)",
-            willChange: "transform",
-          }}
+          className="npm hidden static mt-8 mx-auto md:mx-auto lg:absolute lg:bottom-6 lg:right-4 lg:mr-16 lg:mt-0
+             w-[240px] xs:w-[300px] sm:w-[514px] md:w-[537px] lg:w-[580px] xl:w-[700px] xl:m-auto h-auto p-2 rounded-2xl
+             bg-gray-900/30 backdrop-blur-md opacity-95 overflow-hidden
+             sm:grid  // Only becomes visible at sm:640px
+             grid-cols-4 grid-rows-4 gap-2 md:gap-3
+             auto-rows-fr
+             pointer-events-none
+             border border-white/10"
+          style={{ transform: "translateZ(0)", willChange: "transform" }}
         >
           {/* Hero Statement - Top spanning element that tells the story */}
           <div
@@ -375,8 +369,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-     
-      
     </section>
   );
 };
