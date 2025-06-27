@@ -22,7 +22,7 @@ const Navigation = () => {
     { name: 'Our Work', href: '/portfolio' },
     { name: 'Why Us', href: '/#strengths' },
     { name: 'About', href: '/#about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   const handleNavigation = (href: string) => {
