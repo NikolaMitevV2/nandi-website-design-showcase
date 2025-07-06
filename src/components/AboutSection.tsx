@@ -96,7 +96,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative z-10 pt-32 px-6 overflow-hidden"
+      className="relative z-10 overflow-hidden sm:pt-32 sm:px-6"
       style={{ marginTop: "100vh" }} // This creates space for the hero section
     >
       <div
@@ -175,17 +175,11 @@ const AboutSection = () => {
               animationDelay: "0.4s",
             }}
           >
-            {/* Overlay for background image opacity */}
             <div className="absolute inset-0 bg-white opacity-70 rounded-lg sm:"></div>{" "}
-            {/* White overlay with 30% opacity */}
             <h3 className="font-montserrat font-semibold text-3xl text-gray-900 tracking-tight relative z-10">
-              {" "}
-              {/* Added z-10 to bring text above overlay */}
               Crafting Digital Excellence
             </h3>
             <div className="space-y-6 font-lato font-normal text-lg leading-relaxed relative z-10">
-              {" "}
-              {/* Added z-10 to bring text above overlay */}
               <ul className="list-disc pl-5 text-purple-500">
                 <li>
                   <p className="text-gray-700">

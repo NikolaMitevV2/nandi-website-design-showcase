@@ -14,32 +14,28 @@ const ProcessSection = () => {
       title: "Discovery & Strategy",
       description:
         "We begin by understanding your business goals, target audience, and project requirements to create a comprehensive strategy.",
-      image:
-        "/designstrat/1.jpg",
+      image: "/designstrat/1.jpg",
       number: "01",
     },
     {
       title: "Design & Prototyping",
       description:
         "Our design team creates stunning visual concepts and interactive prototypes that bring your vision to life.",
-      image:
-        "/designstrat/2.jpg",
+      image: "/designstrat/2.jpg",
       number: "02",
     },
     {
       title: "Development & Testing",
       description:
         "We build your website using cutting-edge technologies, ensuring optimal performance and thorough testing.",
-      image:
-        "/designstrat/3.jpg",
+      image: "/designstrat/3.jpg",
       number: "03",
     },
     {
       title: "Launch & Optimization",
       description:
         "After launch, we monitor performance and continuously optimize to ensure your website delivers exceptional results.",
-      image:
-        "/designstrat/4.jpg",
+      image: "/designstrat/4.jpg",
       number: "04",
     },
   ];
@@ -92,7 +88,7 @@ const ProcessSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="container mx-auto max-w-7xl px-6 relative py-20"
+      className="mx-auto max-w-7xl px-2 relative py-20 sm:px-6"
     >
       {/* PROGRES BAR */}
       <div className="hidden lg:block absolute -left-14 top-1/2 -translate-y-1/2 h-[calc(100%-80px)] w-2 bg-gray-700/40 rounded-full z-20 ml-6 shadow-inner">
@@ -164,9 +160,9 @@ const ProcessSection = () => {
             }}
             data-step-index={index}
           >
-            <div className="rounded-3xl overflow-hidden shadow-xl">
-              <div className="grid lg:grid-cols-2 min-h-[480px] bg-[linear-gradient(145deg,rgba(30,27,75,1),rgba(49,46,129,1))]">
-                <div className="p-12 lg:p-16 flex flex-col justify-center relative z-10">
+            <div className="rounded-3xl overflow-hidden shadow-xl ">
+              <div className="grid lg:grid-cols-2 min-h-[485px] bg-[linear-gradient(145deg,rgba(30,27,75,1),rgba(49,46,129,1))] ">
+                <div className="p-2 lg:p-16 flex flex-col justify-center relative z-10 sm:p-12">
                   <h3 className="font-montserrat font-bold text-3xl lg:text-4xl text-white mb-6 tracking-tight text-center">
                     {step.title}
                   </h3>
@@ -190,7 +186,7 @@ const ProcessSection = () => {
                   <img
                     src={step.image}
                     alt={step.title}
-                    className="w-full h-full object-cover rounded-3xl"
+                    className="w-full h-64 sm:h-80 md:h-96 lg:h-full object-cover rounded-3xl"
                   />
                 </div>
               </div>

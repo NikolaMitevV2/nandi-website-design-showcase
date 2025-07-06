@@ -27,6 +27,9 @@ export default {
         "spin-slow": "spin 10s linear infinite", // Adjust duration (10s) as needed
         "spin-medium": "spin 15s linear infinite", // Another variation
         "spin-fast": "spin 8s linear infinite", // Yet another
+        "star-movement-bottom":
+          "star-movement-bottom linear infinite alternate",
+        "star-movement-top": "star-movement-top linear infinite alternate",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -87,6 +90,14 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "star-movement-bottom": {
+          "0%": { transform: "translate(0%, 0%)", opacity: "1" },
+          "100%": { transform: "translate(-100%, 0%)", opacity: "0" },
+        },
+        "star-movement-top": {
+          "0%": { transform: "translate(0%, 0%)", opacity: "1" },
+          "100%": { transform: "translate(100%, 0%)", opacity: "0" },
+        },
         spin: {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
@@ -134,7 +145,6 @@ export default {
           },
         },
       },
-
     },
   },
   plugins: [require("tailwindcss-animate")],

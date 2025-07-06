@@ -55,7 +55,7 @@ const StrengthsSection = () => {
   ];
 
   return (
-    <section id="strengths" className="pb-32 px-6 relative overflow-hidden">
+    <section id="strengths" className="pb-32 relative overflow-hidden sm:px-6">
       <div
         ref={sectionRef}
         className="mx-auto bg-purple-100 rounded-b-3xl w-full h-fit sm:p-20 p-5 py-20"

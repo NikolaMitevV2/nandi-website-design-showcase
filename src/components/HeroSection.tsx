@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavigate } from "react-router-dom";
+import BlurText from "./ui/BlurText";
+import StarBorder from "./ui/StarBorder";
+import { Link } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,21 +106,33 @@ const HeroSection = () => {
       {/* Foreground content */}
       <div
         ref={heroRef}
-         className="z-20 px-6 flex flex-col flex-grow relative min-h-0
+        className="z-20 px-6 flex flex-col flex-grow relative min-h-0
              text-center lg:text-left
              items-center md:items-center lg:items-start
              justify-center md:justify-center lg:justify-start
              pt-8 pl-0 md:pl-0 lg:pl-24 sm:pt-0"
       >
-        <h1 className="font-montserrat font-bold text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-[9rem] text-white mb-6 tracking-tight">
-          Websites
-          <br />
-          <span className="bg-gradient-to-r from-space-purple via-space-purple-light to-space-purple bg-clip-text text-transparent w-fit">
-            &lt;/&gt;That Drive
-          </span>
-          <br />
-          <span>Revenue</span>
-        </h1>
+        <BlurText
+          text="Websites"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          className="font-montserrat font-bold text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-[9rem] text-white mb-6 tracking-tight"
+        />
+        <BlurText
+          text="&lt;/&gt; That Drive"
+          delay={300}
+          animateBy="words"
+          direction="bottom"
+          className="font-montserrat font-bold text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-[9rem] text-space-purple-light mb-6 tracking-tight bg-gradient-to-r w-fit"
+        />
+        <BlurText
+          text="Revenue"
+          delay={450}
+          animateBy="words"
+          direction="top"
+          className="font-montserrat font-bold text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-[9rem] text-white mb-6 tracking-tight"
+        />
         <div className="flex flex-col items-center lg:items-start">
           <p
             className="font-lato opacity-90 text-base md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed" // Paragraph text size unchanged from original for mobile
@@ -127,12 +142,29 @@ const HeroSection = () => {
             into customers and accelerate your business growth.
           </p>
           <button
+            onClick={() => {
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            <StarBorder
+              as="button"
+              className="neumorphic-btn border-0 text-white font-montserrat font-medium text-base tracking-wide w-fit"
+              color="white"
+              speed="5s"
+            >
+              Get Started
+            </StarBorder>
+          </button>
+
+          {/* <button
             onClick={scrollToContact}
             className="neumorphic-btn text-white font-montserrat font-medium text-base tracking-wide w-fit"
             style={{ animationDelay: "0.4s" }}
           >
             Get Started
-          </button>
+          </button> */}
         </div>
 
         {/* Dynamic Grid Element for Key Values - Hidden on smallest screens */}
