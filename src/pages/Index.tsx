@@ -5,8 +5,9 @@ import StrengthsSection from "../components/StrengthsSection";
 import ProcessSection from "../components/ProcessSection";
 import PortfolioSection from "../components/PortfolioSection";
 import PricingSection from "../components/PricingSection";
+import Contact from "./Contact";
 
-import ContactSection from "../components/ContactSection";
+
 import Footer from "../components/Footer";
 
 const Index = () => {
@@ -19,7 +20,7 @@ const Index = () => {
       <ProcessSection />
       <PortfolioSection />
       <PricingSection />
-      <ContactSection />
+      <Contact />
       <Footer />
     </div>
   );

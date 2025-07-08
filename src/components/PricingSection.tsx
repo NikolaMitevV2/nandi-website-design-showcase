@@ -138,7 +138,7 @@ const PricingSection = () => {
 
   return (
     <section className="py-32 px-6 relative overflow-hidden">
-      <div ref={sectionRef} className="container mx-auto max-w-7xl">
+      <div ref={sectionRef} className="w-full m-auto p-auto mx-auto max-w-7xl sm:p-6">
         <div className="text-center mb-20">
           <h2 className="animate-on-scroll font-montserrat font-bold text-4xl md:text-5xl text-white mb-8 tracking-tight">
             Investment Plans

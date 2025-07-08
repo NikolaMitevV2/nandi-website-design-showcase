@@ -97,17 +97,9 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="py-32 px-6 relative overflow-hidden">
-        <div ref={sectionRef} className="container mx-auto max-w-7xl">
+      <section className="py-32 px-6 relative overflow-hidden " id="contact">
+        <div ref={sectionRef} className="w-full m-auto  mx-auto max-w-7xl">
           <div className="mb-12">
-            <Link
-              to="/"
-              className="animate-on-scroll inline-flex items-center space-x-2 text-space-purple-light hover:text-white transition-colors duration-300 mb-8"
-            >
-              <ArrowLeft size={20} />
-              <span className="font-lato font-light">Back to Home</span>
-            </Link>
-
             <h1 className="animate-on-scroll font-montserrat font-bold text-5xl md:text-6xl text-white mb-8 tracking-tight">
               Get In Touch
             </h1>
@@ -139,7 +131,7 @@ const Contact = () => {
                       Email
                     </h3>
                     <p className="font-lato font-light text-body text-gray-300 text-lg">
-                      hello@ni-agency.com
+                      info@nandi-studio.com
                     </p>
                     <p className="font-lato font-light text-body text-gray-400">
                       We respond within 24 hours
@@ -216,7 +208,7 @@ const Contact = () => {
             </div>
 
             <div
-              className="animate-on-scroll card-hover p-8 rounded-3xl"
+              className="animate-on-scroll -m-4 card-hover p-8 rounded-3xl sm:-m-0"
               style={{ animationDelay: "0.4s" }}
             >
               <h2 className="font-montserrat font-bold text-2xl text-white mb-8">
