@@ -88,7 +88,7 @@ const HeroSection = () => {
         className="absolute top-0 left-0 w-full h-[130vh] -z-10" // Spline height is unchanged
         style={{ willChange: "transform" }}
       >
-        <iframe
+        {/* <iframe
           src="https://my.spline.design/glowingplanetparticles-5qSfykJ958pk09NZnFexIdME/"
           frameBorder="0"
           allow="autoplay; fullscreen"
@@ -97,7 +97,7 @@ const HeroSection = () => {
             pointerEvents: "none",
             display: "block",
           }}
-        />
+        /> */}
       </div>
 
       {/* Foreground content */}

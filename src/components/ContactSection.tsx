@@ -96,8 +96,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
-      <section className="py-32 px-6 relative overflow-hidden">
+    <div className="min-h-screen pt-20" >
+      <section className="py-32 px-6 relative overflow-hidden"id="contact">
         <div ref={sectionRef} className="container mx-auto max-w-7xl">
           <div className="mb-12">
             <Link
